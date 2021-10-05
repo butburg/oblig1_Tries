@@ -1,14 +1,16 @@
 package main.tries;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author github.com/butburg (EW) on Okt 2021
  */
 public class StandardTrie {
     char val;
-    List<StandardTrie> children = new LinkedList<>();
+    Map<Character, StandardTrie> children = new HashMap<>();
 
     public char getVal() {
         return val;
@@ -18,14 +20,14 @@ public class StandardTrie {
         this.val = val;
     }
 
-    StandardTrie(char data){
-        val = data;
+    StandardTrie(Map<Character, StandardTrie> child){
+        children = child;
     }
 
     StandardTrie(){
     }
 
-    StandardTrie(char data, List<StandardTrie> child){
+    StandardTrie(char data, Map<Character, StandardTrie> child){
         val = data;
         children = child;
     }

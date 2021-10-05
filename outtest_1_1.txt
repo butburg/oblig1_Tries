@@ -1,7 +1,6 @@
-(interweb)
-((nternet))
-((nter))
-((nside))
+internet: [internet[(
+interview: [inter(view[(net[(
+inter: [inter(view[(net[(
 looked up(interweb)
 looked up(inter)
 looked up(in)

@@ -54,7 +54,7 @@ public class Main {
         //find the next word in tree
         ArrayList<String> resultsLookup = new ArrayList<>();
         for (int i = n + 1; i < stringRows.size(); i++) {
-            System.out.println("Look up " + stringRows.get(i));
+            //System.out.println("Look up " + stringRows.get(i));
             resultsLookup.add(trie.getLookup(stringRows.get(i)));
         }
 
@@ -65,7 +65,7 @@ public class Main {
                 out.println(s);
             }
             for (String s : resultsLookup) {
-                System.out.println("check2:" + s);
+                //System.out.println("check2:" + s);
                 out.println(s);
             }
         }
