@@ -1,16 +1,31 @@
 package main.tries;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author github.com/butburg (EW) on Okt 2021
  */
 public class StandardTrie {
     char val;
-    Map<Character, StandardTrie> children = new HashMap<>();
+    boolean isRoot = false;
+    Map<Character, StandardTrie> children = new TreeMap<>();
+
+    StandardTrie(boolean isRoot){
+        this.isRoot = isRoot;
+    }
+
+    StandardTrie(){
+    }
+
+
+    StandardTrie(char data, Map<Character, StandardTrie> child){
+        val = data;
+        children = child;
+    }
+
+    public boolean isRoot() {
+        return isRoot;
+    }
 
     public char getVal() {
         return val;
@@ -20,16 +35,5 @@ public class StandardTrie {
         this.val = val;
     }
 
-    StandardTrie(Map<Character, StandardTrie> child){
-        children = child;
-    }
-
-    StandardTrie(){
-    }
-
-    StandardTrie(char data, Map<Character, StandardTrie> child){
-        val = data;
-        children = child;
-    }
 }
 

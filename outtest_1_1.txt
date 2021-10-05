@@ -1,6 +1,6 @@
-internet: [internet[(
-interview: [inter(view[(net[(
-inter: [inter(view[(net[(
+internet: internet
+interview: inter{net}{view}
+inter: inter{net}{view}
 looked up(interweb)
 looked up(inter)
 looked up(in)

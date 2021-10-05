@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public class Trie {
 
-    StandardTrie root = new StandardTrie();
+    StandardTrie root = new StandardTrie(true);
 
     public Trie() {
 
@@ -15,29 +15,21 @@ public class Trie {
 
     public String insert(String newWord) {
 
-        insertLoop(root, newWord);
-        //get structure
-
-        return newWord + ": " + getBranch(root, 0);
+        String ret = insertLoop(root, newWord);
+        //get structurer
+        return newWord + ": " + getBranch(root);
     }
 
     public String insertLoop(StandardTrie branch, String newWord) {
-
         Map<Character, StandardTrie> children = branch.children;
-
-        if (children.containsKey(newWord.charAt(0))) {
-            //if there is the same
-            // see if this child has a child = newWord[v=1]
+        if (children.containsKey(newWord.charAt(0))) { //if there is the same see if this child has a child = newWord[v=1]
             // do this [v++]
             if (newWord.length() > 1) {
                 return newWord.charAt(0) + insertLoop(children.get(newWord.charAt(0)), newWord.substring(1));
             } else {
-                //until there is condition 1# but with index[v] or word at end
-                return newWord;
+                return newWord; //until there is condition 1# but with index[v] or word at end
             }
-        } else {
-            //c1: if no char-child of root is equal newWord[v=0]
-            // add char by char
+        } else { //c1: if no char-child of root is equal newWord[v=0 add char by char
             return addChar(branch, newWord);
         }
     }
@@ -52,23 +44,21 @@ public class Trie {
         else return wordToAdd;
     }
 
-    public String getBranch(StandardTrie branch, int count) {
-        StringBuilder ret = new StringBuilder();
+
+    public String getBranch(StandardTrie branch) {
+        String ret = "";
         for (Map.Entry<Character,
                 StandardTrie> entry : branch.children.entrySet()) {
             String key = String.valueOf(entry.getKey());
             StandardTrie trie = entry.getValue();
-            if (trie.children.size() > 1)
-                ret.append(key).append("(").append(getBranch(trie, count+1));
-            else if (trie.children.size() == 0)
-                ret.append(key).append(getBranch(trie, 0)).append("(");
+            if (branch.children.size() > 1)
+                ret = ret + "{" + key + getBranch(trie) + "}";
             else
-                ret.append(key).append(getBranch(trie, count+1));
+                ret = ret + key + getBranch(trie);
         }
-        if(0== count)
-            return "["+ret.toString();
-        return ret.toString();
+        return ret;
     }
+
 
     public String getLookup(String lookupWord) {
         return "looked up(" + lookupWord + ")";
