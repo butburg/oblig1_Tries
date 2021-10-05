@@ -8,12 +8,12 @@ import java.util.TreeMap;
  */
 public class StandardTrie {
     char val;
-    boolean isWordsFirstChar = false;
+    boolean isWordsLastChar = false;
     boolean isRoot = false;
     Map<Character, StandardTrie> children = new TreeMap<>();
 
-    StandardTrie(boolean isRoot, boolean isWordsFirstChar) {
-        this.isWordsFirstChar = isWordsFirstChar;
+    StandardTrie(boolean isRoot, boolean isWordsLastChar) {
+        this.isWordsLastChar = isWordsLastChar;
         this.isRoot = isRoot;
     }
 
@@ -26,14 +26,14 @@ public class StandardTrie {
         children = child;
     }
 
-    StandardTrie(boolean isWordsFirstChar, char data, Map<Character, StandardTrie> child) {
+    StandardTrie(boolean isWordsLastChar, char data, Map<Character, StandardTrie> child) {
         val = data;
-        this.isWordsFirstChar = isWordsFirstChar;
+        this.isWordsLastChar = isWordsLastChar;
         children = child;
     }
 
-    public boolean isWordsFirstChar() {
-        return isWordsFirstChar;
+    public boolean isWordsLastChar() {
+        return isWordsLastChar;
     }
 
     public boolean isRoot() {
@@ -48,5 +48,8 @@ public class StandardTrie {
         this.val = val;
     }
 
+    public void setWordsLastChar() {
+        isWordsLastChar = true;
+    }
 }
 

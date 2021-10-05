@@ -22,6 +22,7 @@ public class Trie {
         Map<Character, StandardTrie> children = branch.children;
         if (children.containsKey(newWord.charAt(0))) { //if there is the same see if this child has a child = newWord[v=1]
             // do this [v++]
+            if(newWord.length() == 1) branch.children.get(newWord.charAt(0)).setWordsLastChar();
             if (newWord.length() > 1) {
                 return newWord.charAt(0) + insertLoop(children.get(newWord.charAt(0)), newWord.substring(1), false);
             } else {
@@ -34,12 +35,15 @@ public class Trie {
 
     public String addChar(StandardTrie branch, String wordToAdd, boolean first) {
         char c = wordToAdd.charAt(0);
-        StandardTrie st = new StandardTrie(false, first);
+        StandardTrie st = new StandardTrie(false, false);
+        if(wordToAdd.length() == 1)
+            st.setWordsLastChar();
         branch.children.put(c, st);
 
         if (wordToAdd.length() > 1)
             return wordToAdd.charAt(0) + addChar(st, wordToAdd.substring(1),false);
-        else return wordToAdd;
+        else {
+            return wordToAdd;}
     }
 
 
@@ -59,17 +63,15 @@ public class Trie {
 
 
     public String getLookup(String lookupWord) {
-        StandardTrie branch = root.children.get(lookupWord.charAt(0));
-        if(branch != null && branch.isWordsFirstChar()) {
             if (getLookup(root, lookupWord))
                 return lookupWord + ": YES";
-        }
         return lookupWord + ": NO";
     }
 
     private boolean getLookup(StandardTrie branch, String lookupWord) {
-        if (lookupWord.equals("")) return true;
-        else if (branch.children.containsKey(lookupWord.charAt(0)))
+        if (lookupWord.equals("") ) {
+            return branch.isWordsLastChar();
+        } else if (branch.children.containsKey(lookupWord.charAt(0)))
             return getLookup(branch.children.get(lookupWord.charAt(0)), lookupWord.substring(1));
         else return false;
     }
