@@ -47,7 +47,7 @@ public class Main {
         //insert word one, two, ...
         ArrayList<String> resultsInsert = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
-            System.out.println("Inserting " + stringRows.get(i));
+            //System.out.println("Inserting " + stringRows.get(i));
             resultsInsert.add(trie.insert(stringRows.get(i)));
         }
 
@@ -61,11 +61,11 @@ public class Main {
         //output the results into a file:
         try (PrintWriter out = new PrintWriter(fileOutput)) {
             for (String s : resultsInsert) {
-                System.out.println("check:" + s);
+                //System.out.println("check:" + s);
                 out.println(s);
             }
             for (String s : resultsLookup) {
-                //System.out.println("check2:" + s);
+                System.out.println("check2:" + s);
                 out.println(s);
             }
         }
