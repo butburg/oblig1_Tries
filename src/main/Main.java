@@ -1,14 +1,11 @@
 package main;
 
-import main.tries.Trie;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-;
 
 public class Main {
 
@@ -20,7 +17,6 @@ public class Main {
 
         String fileInput = args[0];
         String fileOutput = args[1];
-
 
         //build String Array from File
         Scanner in = new Scanner(new File(fileInput));
@@ -41,7 +37,7 @@ public class Main {
         //read N
         int n = Integer.parseInt(stringRows.get(0));
 
-        //build tree
+        //build trie
         Trie trie = new Trie();
 
         //insert word one, two, ...
@@ -65,13 +61,11 @@ public class Main {
                 out.println(s);
             }
             for (String s : resultsLookup) {
-                System.out.println("check2:" + s);
+                System.out.println("Check 2: " + s);
                 out.println(s);
             }
         }
 
-        // System.out.println(resultsInsert);
-        //System.out.println(resultsLookup);
 
     }
 }
